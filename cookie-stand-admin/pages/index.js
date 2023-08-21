@@ -9,10 +9,10 @@ const Header = () => (
     event.preventDefault();
 
     const cookieStand = {
-      location,
-      minCustomers,
-      maxCustomers,
-      avgCookies,
+      location: event.target.location.value,
+      MinimumCustomersPerHour: event.target.minCustomers.value,
+      MaximumCustomersPerHour: event.target.maxCustomers.value,
+      AverageCookiesPerSale: event.target.AverageCookies.value
     };
 
     setJsonString(JSON.stringify(cookieStand, null, 2));
@@ -30,7 +30,7 @@ const Main = () => (
           type="text"
           className="w-full border rounded-md p-2"
           placeholder="Enter location"
-          
+          name ="location"
         />
       </label>
       <div className="flex items-center space-x-2">
@@ -40,6 +40,7 @@ const Main = () => (
           type="number"
           className="w-full border rounded-md p-2"
           placeholder="Enter minimum customers"
+          name ="MinimumCustomersPerHour"
         />
       </label>
       <label className="block mb-2">
@@ -48,6 +49,7 @@ const Main = () => (
           type="number"
           className="w-full border rounded-md p-2"
           placeholder="Enter maximum customers"
+          name ="MaximumCustomersPerHour"
         />
       </label>
       <label className="block mb-2">
@@ -57,6 +59,7 @@ const Main = () => (
           step="0.01"
           className="w-full border rounded-md p-2"
           placeholder="Enter average cookies"
+          name ="AverageCookiesPerSale"
         />
       </label>
       <button
