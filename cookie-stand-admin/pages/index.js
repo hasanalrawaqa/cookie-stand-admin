@@ -4,11 +4,21 @@ import Header from '@/components/Header';
 import CreateForm from '@/components/createForm';
 import ReportTable from '@/components/ReportTable';
 import Footer from '@/components/Footer';
+import LoginForm from '@/components/LoginForm';
+import CookieStandAdmin from '@/components/CookieStandAdmin';
+
 
 
  
 
 export default function Home() {
+
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const handleLogin = (username, password) => {
+    // Authenticate the user using the provided credentials
+    // If successful, setLoggedIn(true)
+  };
   // State to store the cookie stand data
   const [cookieStands, setCookieStands] = useState([]);
 
@@ -38,6 +48,11 @@ export default function Home() {
       <title>Cookie Stand Admin</title>
     </Head>
     <Header />
+    {loggedIn ? (
+        <CookieStandAdmin apiUrl={process.env.NEXT_PUBLIC_API_URL} />
+      ) : (
+        <LoginForm onLogin={handleLogin} />
+      )}
     <CreateForm  handeler={addCookieStand}/>
     <ReportTable handeler={cookieStands.length} handeler2={cookieStands}/>
     <Footer  />
